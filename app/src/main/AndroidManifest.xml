@@ -38,6 +38,13 @@
             android:label="@string/title_activity_organization"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".searchSpanish"
+            android:label="@string/title_activity_search_spanish"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".resultsSpanish">
+        </activity>
     </application>
 
 </manifest>
