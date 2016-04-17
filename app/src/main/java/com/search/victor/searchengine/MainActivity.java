@@ -15,24 +15,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Button mbModifyDatabase = (Button) findViewById (R.id.database);
-        Button mbSearch = (Button) findViewById (R.id.search);
 
+        Button mbSearch = (Button) findViewById (R.id.search);
         final Intent intentSearch = new Intent(this, Search.class);
-//        final Intent intentData = new Intent(this, Input.class);
-//        mbModifyDatabase.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                startActivity(intentData);
-//            }
-//        });
         mbSearch.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v){startActivity (intentSearch);}
         });
+
+        Button mbSpanishSearch = (Button) findViewById (R.id.searchSpanish);
+        final Intent intentSearchSpanish = new Intent(this, searchSpanish.class);
+        mbSpanishSearch.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v){startActivity (intentSearchSpanish);};
+        });
+
     }
 
     @Override

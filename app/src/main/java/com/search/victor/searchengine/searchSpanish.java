@@ -21,9 +21,9 @@ import android.widget.TextView;
 import com.search.victor.searchengine.adapters.ArrayWheelAdapter;
 
 
-public class Search extends AppCompatActivity {
+public class searchSpanish extends AppCompatActivity {
 
-    DatabaseHandler dbContext;
+    SpanishDatabaseHandler dbContext;
     SQLiteDatabase database;
     boolean wheelScrolled = false;
     EditText inputTextName;
@@ -45,28 +45,28 @@ public class Search extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_search_spanish);
 
-        dbContext = new DatabaseHandler(this);
+        dbContext = new SpanishDatabaseHandler(this);
 
         database = dbContext.getWritableDatabase();
 //        dbContext.onUpgrade(database, 2,1);
-        inputTextName = (EditText)findViewById(R.id.OrgInName);
-        inputTextName.setHint("Organization Name");
-        inputTextCategory = (EditText)findViewById(R.id.OrgInCategory);
-        inputTextCategory.setHint("Category");
-        inputTextZip = (EditText)findViewById(R.id.OrgInAddressZip);
-        inputTextZip.setHint("Zip Code");
-        inputTextCity = (EditText)findViewById(R.id.OrgInAddressCity);
-        inputTextCity.setHint("City");
-        inputTextState = (EditText)findViewById(R.id.OrgInAddressState);
-        inputTextState.setHint("State");
-        inputTextCost = (EditText)findViewById(R.id.OrgInCost);
-        inputTextCost.setHint("Cost");
-        inputTextPopulation = (EditText)findViewById(R.id.OrgInPop);
-        inputTextPopulation.setHint("Age Group/Group Type");
-        inputTextLanguage = (EditText)findViewById(R.id.OrgInLang);
-        inputTextLanguage.setHint("Language");
+        inputTextName = (EditText)findViewById(R.id.SOrgInName);
+        inputTextName.setHint("Nombre de la organización");
+        inputTextCategory = (EditText)findViewById(R.id.SOrgInCategory);
+        inputTextCategory.setHint("Categoría");
+        inputTextZip = (EditText)findViewById(R.id.SOrgInAddressZip);
+        inputTextZip.setHint("El Código Postal");
+        inputTextCity = (EditText)findViewById(R.id.SOrgInAddressCity);
+        inputTextCity.setHint("Ciudad");
+        inputTextState = (EditText)findViewById(R.id.SOrgInAddressState);
+        inputTextState.setHint("Estado");
+        inputTextCost = (EditText)findViewById(R.id.SOrgInCost);
+        inputTextCost.setHint("El Costo");
+        inputTextPopulation = (EditText)findViewById(R.id.SOrgInPop);
+        inputTextPopulation.setHint("Grupo De Personas");
+        inputTextLanguage = (EditText)findViewById(R.id.SOrgInLang);
+        inputTextLanguage.setHint("Idioma");
         CategoryMenu = dbContext.allCategories();
         ZipMenu = dbContext.allZips();
         CityMenu = dbContext.allCity();
@@ -74,15 +74,15 @@ public class Search extends AppCompatActivity {
         CostMenu = dbContext.allCost();
         LanguageMenu = dbContext.allLanguage();
         AgeGroupMenu = dbContext.allAges();
-        initCatGroup(R.id.CatWheel);
-        initAgeGroup(R.id.AgeWheel);
-        initCityGroup(R.id.CityWheel);
-        initCostGroup(R.id.CostWheel);
-        initLanguageGroup(R.id.LangWheel);
-        initStateGroup(R.id.StateWheel);
-        initZipGroup(R.id.ZipWheel);
+        initCatGroup(R.id.SCatWheel);
+        initAgeGroup(R.id.SAgeWheel);
+        initCityGroup(R.id.SCityWheel);
+        initCostGroup(R.id.SCostWheel);
+        initLanguageGroup(R.id.SLangWheel);
+        initStateGroup(R.id.SStateWheel);
+        initZipGroup(R.id.SZipWheel);
 
-        final Button mbSearch = (Button)findViewById(R.id.Search);
+        final Button mbSearch = (Button)findViewById(R.id.SSearch);
         mbSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +93,7 @@ public class Search extends AppCompatActivity {
                         inputTextCity.getText().toString(), inputTextState.getText().toString(),
                         inputTextCost.getText().toString(), inputTextPopulation.getText().toString(),
                         inputTextLanguage.getText().toString()});
-                Intent intentData = new Intent(Search.this, results.class);
+                Intent intentData = new Intent(searchSpanish.this, resultsSpanish.class);
                 intentData.putExtras(inputs);
                 startActivity(intentData);
             }
@@ -125,13 +125,13 @@ public class Search extends AppCompatActivity {
 
     private void updateStatus()
     {
-        inputTextCity.setText(CityMenu[getWheel(R.id.CityWheel).getCurrentItem()]);
-        inputTextCost.setText(CostMenu[getWheel(R.id.CostWheel).getCurrentItem()]);
-        inputTextLanguage.setText(LanguageMenu[getWheel(R.id.LangWheel).getCurrentItem()]);
-        inputTextState.setText(StateMenu[getWheel(R.id.StateWheel).getCurrentItem()]);
-        inputTextZip.setText(ZipMenu[getWheel(R.id.ZipWheel).getCurrentItem()]);
-        inputTextPopulation.setText(AgeGroupMenu[getWheel(R.id.AgeWheel).getCurrentItem()]);
-        inputTextCategory.setText(CategoryMenu[getWheel(R.id.CatWheel).getCurrentItem()]);
+        inputTextCity.setText(CityMenu[getWheel(R.id.SCityWheel).getCurrentItem()]);
+        inputTextCost.setText(CostMenu[getWheel(R.id.SCostWheel).getCurrentItem()]);
+        inputTextLanguage.setText(LanguageMenu[getWheel(R.id.SLangWheel).getCurrentItem()]);
+        inputTextState.setText(StateMenu[getWheel(R.id.SStateWheel).getCurrentItem()]);
+        inputTextZip.setText(ZipMenu[getWheel(R.id.SZipWheel).getCurrentItem()]);
+        inputTextPopulation.setText(AgeGroupMenu[getWheel(R.id.SAgeWheel).getCurrentItem()]);
+        inputTextCategory.setText(CategoryMenu[getWheel(R.id.SCatWheel).getCurrentItem()]);
     }
 
     private void initAgeGroup(int id)
@@ -316,7 +316,7 @@ public class Search extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_search, menu);
+        getMenuInflater().inflate(R.menu.menu_search_spanish, menu);
         return true;
     }
 
