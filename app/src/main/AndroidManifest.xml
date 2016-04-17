@@ -21,6 +21,10 @@
             android:label="@string/title_activity_search">
         </activity>
         <activity
+            android:name=".SearchNew"
+            android:label="@string/title_activity_search">
+        </activity>
+        <activity
             android:name=".Input"
             android:label="@string/title_activity_input">
         </activity>

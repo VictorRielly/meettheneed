@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="MeetTheNeed">
         <!-- Customize your theme here. -->
     </style>
 
@@ -13,5 +13,31 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="MeetTheNeed" parent="Theme.AppCompat.NoActionBar"/>
+
+
+    <style name="ButtonAppTheme" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:background">@color/accent_material_dark</item>
+        <item name="android:minWidth">@dimen/btn_flat_min_width</item>
+        <item name="android:minHeight">@dimen/btn_flat_min_height</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:padding">@dimen/btn_flat_padding</item>
+        <item name="android:layout_marginLeft">@dimen/btn_flat_margin</item>
+        <item name="android:layout_marginRight">@dimen/btn_flat_margin</item>
+    </style>
+
+    <style name="Toolbar" parent="Widget.AppCompat.Light.ActionBar">
+        <item name="android:background">@color/primary_dark_material_dark</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
+    <style name="horizontalLinLayout">
+        <item name="android:layout_marginTop">8dp</item>
+
+    </style>
 
 </resources>
