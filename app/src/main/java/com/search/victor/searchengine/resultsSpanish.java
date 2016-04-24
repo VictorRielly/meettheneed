@@ -36,7 +36,7 @@ public class resultsSpanish extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
         Bundle inputs = this.getIntent().getExtras();
         String data[] = inputs.getStringArray("Querry Strings");
-        Log.e("data",String.valueOf(data.length));
+        Log.e("dataSpanish",String.valueOf(data.length));
         Log.e("data[0]",String.valueOf(data[0].length()));
         final SpanishDatabaseHandler dbHandler = new SpanishDatabaseHandler(this);
 //        data[0] = inputTextName.getText().toString();
@@ -68,7 +68,7 @@ public class resultsSpanish extends AppCompatActivity {
                 public void onClick(View v) {
                     Bundle inputs = new Bundle();
                     inputs.putString("Org ID", v.getTag().toString());
-                    Intent intentData = new Intent(resultsSpanish.this,Organization.class);
+                    Intent intentData = new Intent(resultsSpanish.this,OrganizationSpanish.class);
                     intentData.putExtras(inputs);
                     Log.e("The data:", ((Button) v).getText().toString() + ", ID: " + v.getTag().toString());
                     startActivity(intentData);
@@ -94,7 +94,7 @@ public class resultsSpanish extends AppCompatActivity {
                     public void onClick(View v) {
                         Bundle inputs = new Bundle();
                         inputs.putString("Org ID", v.getTag().toString());
-                        Intent intentData = new Intent(resultsSpanish.this,Organization.class);
+                        Intent intentData = new Intent(resultsSpanish.this,OrganizationSpanish.class);
                         intentData.putExtras(inputs);
                         Log.e("The data:", ((Button)v).getText().toString() + ", ID: " + v.getTag().toString());
                         startActivity(intentData);

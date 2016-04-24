@@ -25,6 +25,10 @@
             android:label="@string/title_activity_search">
         </activity>
         <activity
+            android:name=".SearchNewSpanish"
+            android:label="@string/title_activity_search_spanish">
+        </activity>
+        <activity
             android:name=".Input"
             android:label="@string/title_activity_input">
         </activity>
@@ -48,6 +52,11 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".resultsSpanish">
+        </activity>
+        <activity
+            android:name=".OrganizationSpanish"
+            android:label="@string/title_activity_organization_spanish"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 

@@ -14,10 +14,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_new);
 
         Button mbSearch = (Button) findViewById (R.id.search);
-        final Intent intentSearch = new Intent(this, Search.class);
+        final Intent intentSearch = new Intent(this, SearchNew.class);
         mbSearch.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button mbSpanishSearch = (Button) findViewById (R.id.searchSpanish);
-        final Intent intentSearchSpanish = new Intent(this, searchSpanish.class);
+        final Intent intentSearchSpanish = new Intent(this, SearchNewSpanish.class);
         mbSpanishSearch.setOnClickListener(new View.OnClickListener()
         {
             @Override

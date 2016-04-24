@@ -56,7 +56,7 @@ public class SearchNew extends AppCompatActivity
 
   ArrayAdapter<String> mArrayAdapter;
   AutoCompleteCustomArrayAdapter mNewAdapter;
-  String currentMenu[] = new String[]{"Test"};
+  String currentMenu[] = new String[]{""};
   Constants.FORMS whatMenu;
 
 
