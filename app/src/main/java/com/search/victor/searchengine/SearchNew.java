@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,6 +43,7 @@ public class SearchNew extends AppCompatActivity
   CustomAutoCompleteView inputTextPopulation;
   CustomAutoCompleteView inputTextLanguage;
 
+  String OrganizationMenu[];
   String CategoryMenu[];
   String ZipMenu[];
   String CityMenu[];
@@ -51,11 +53,7 @@ public class SearchNew extends AppCompatActivity
   String AgeGroupMenu[];
 
 
-
-  CustomAutoCompleteView myAutoComplete;
-
   ArrayAdapter<String> mArrayAdapter;
-  AutoCompleteCustomArrayAdapter mNewAdapter;
   String currentMenu[] = new String[]{""};
   Constants.FORMS whatMenu;
 
@@ -76,6 +74,7 @@ public class SearchNew extends AppCompatActivity
     initMenus();
     setOnClickListeners();
     initAdapters();
+    setupToolbar();
 
     //dbContext.onUpgrade(database, 2,1);
 
@@ -96,6 +95,8 @@ public class SearchNew extends AppCompatActivity
         startActivity(intentData);
       }
     });
+
+    final Button mbClear = (Button) findViewById(R.id.Clear);
   }
 
   public void initViews()
@@ -121,6 +122,7 @@ public class SearchNew extends AppCompatActivity
 
   public void initMenus()
   {
+    OrganizationMenu = dbContext.allOrganizations();
     CategoryMenu = dbContext.allCategories();
     ZipMenu = dbContext.allZips();
     CityMenu = dbContext.allCity();
@@ -132,14 +134,14 @@ public class SearchNew extends AppCompatActivity
 
   public void initTextChange()
   {
-    inputTextName.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this));
-    inputTextCategory.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this));
-    inputTextZip.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this));
-    inputTextCity.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this));
-    inputTextState.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this));
-    inputTextCost.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this));
-    inputTextPopulation.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this));
-    inputTextLanguage.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this));
+    inputTextName.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this, false));
+    inputTextCategory.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this, false));
+    inputTextZip.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this, false));
+    inputTextCity.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this, false));
+    inputTextState.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this, false));
+    inputTextCost.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this, false));
+    inputTextPopulation.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this, false));
+    inputTextLanguage.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this, false));
   }
 
   public void initAdapters()
@@ -196,29 +198,29 @@ public class SearchNew extends AppCompatActivity
       }
     });
     inputTextCity.setOnTouchListener(new View.OnTouchListener()
-  {
-    @Override
-    public boolean onTouch(View v, MotionEvent event)
     {
-      if (event.getAction() == MotionEvent.ACTION_UP)
+      @Override
+      public boolean onTouch(View v, MotionEvent event)
       {
-        whatMenu = Constants.FORMS.CITY;
+        if (event.getAction() == MotionEvent.ACTION_UP)
+        {
+          whatMenu = Constants.FORMS.CITY;
+        }
+        return false;
       }
-      return false;
-    }
-  });
+    });
     inputTextState.setOnTouchListener(new View.OnTouchListener()
-  {
-    @Override
-    public boolean onTouch(View v, MotionEvent event)
     {
-      if (event.getAction() == MotionEvent.ACTION_UP)
+      @Override
+      public boolean onTouch(View v, MotionEvent event)
       {
-        whatMenu = Constants.FORMS.STATE;
+        if (event.getAction() == MotionEvent.ACTION_UP)
+        {
+          whatMenu = Constants.FORMS.STATE;
+        }
+        return false;
       }
-      return false;
-    }
-  });
+    });
     inputTextCost.setOnTouchListener(new View.OnTouchListener()
     {
       @Override
@@ -257,6 +259,18 @@ public class SearchNew extends AppCompatActivity
     });
   }
 
+  public void onClearButton(View view)
+  {
+    inputTextName.setText("");
+    inputTextCategory.setText("");
+    inputTextZip.setText("");
+    inputTextCity.setText("");
+    inputTextState.setText("");
+    inputTextCost.setText("");
+    inputTextLanguage.setText("");
+    inputTextPopulation.setText("");
+  }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
@@ -287,6 +301,14 @@ public class SearchNew extends AppCompatActivity
     switch (whatMenu)
     {
       case NAME:
+        for (String str : OrganizationMenu)
+        {
+          if (str.toLowerCase().contains(search.toString().toLowerCase()))
+          {
+            test.add(str);
+          }
+        }
+        break;
 
       case CATEGORY:
         for (String str : CategoryMenu)
@@ -357,6 +379,13 @@ public class SearchNew extends AppCompatActivity
     currentMenu = test.toArray(currentMenu);
 
     return currentMenu;
+  }
+
+  public void setupToolbar()
+  {
+    Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+    setSupportActionBar(toolbar);
+    setTitle("Search");
   }
 
 }

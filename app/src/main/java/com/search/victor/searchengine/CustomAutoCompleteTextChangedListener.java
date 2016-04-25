@@ -16,9 +16,11 @@ public class CustomAutoCompleteTextChangedListener implements TextWatcher
 
   public static final String TAG = "CustomAutoCompleteTextChangedListener.java";
   Context context;
+  boolean bIsSpanish;
 
-  public CustomAutoCompleteTextChangedListener(Context context){
+  public CustomAutoCompleteTextChangedListener(Context context, boolean bSpanish){
     this.context = context;
+    this.bIsSpanish = bSpanish;
   }
 
   @Override
@@ -42,45 +44,91 @@ public class CustomAutoCompleteTextChangedListener implements TextWatcher
       // if you want to see in the logcat what the user types
       Log.e("TextChangeListener", "User input: " + userInput);
 
-      SearchNew searchActivity = ((SearchNew) context);
-
-      Log.e("TextChangeListener", "got context");
-      //fill a string array based on the user input... search the correct things..
-      searchActivity.currentMenu = searchActivity.getItems(userInput.toString());
-
-      searchActivity.mArrayAdapter.notifyDataSetChanged();
-      searchActivity.mArrayAdapter = new ArrayAdapter<String>(searchActivity,
-          android.R.layout.simple_dropdown_item_1line, searchActivity.currentMenu);
-
-      switch (searchActivity.whatMenu)
+      if (bIsSpanish)
       {
-        case NAME:
-          searchActivity.inputTextName.setAdapter(searchActivity.mArrayAdapter);
-          break;
-        case CATEGORY:
-          searchActivity.inputTextCategory.setAdapter(searchActivity.mArrayAdapter);
-          break;
-        case ZIPCODE:
-          searchActivity.inputTextZip.setAdapter(searchActivity.mArrayAdapter);
-          break;
-        case CITY:
-          searchActivity.inputTextCity.setAdapter(searchActivity.mArrayAdapter);
-          break;
-        case STATE:
-          searchActivity.inputTextState.setAdapter(searchActivity.mArrayAdapter);
-          break;
-        case COST:
-          searchActivity.inputTextCost.setAdapter(searchActivity.mArrayAdapter);
-          break;
-        case LANGUAGE:
-          searchActivity.inputTextLanguage.setAdapter(searchActivity.mArrayAdapter);
-          break;
-        case AGE_GROUP:
-          searchActivity.inputTextPopulation.setAdapter(searchActivity.mArrayAdapter);
-          break;
-        default:
-          searchActivity.inputTextName.setAdapter(searchActivity.mArrayAdapter);
-          break;
+        SearchNewSpanish searchActivity = ((SearchNewSpanish) context);
+
+        Log.e("TextChangeListener", "got context");
+        //fill a string array based on the user input... search the correct things..
+        searchActivity.currentMenu = searchActivity.getItems(userInput.toString());
+
+        searchActivity.mArrayAdapter.notifyDataSetChanged();
+        searchActivity.mArrayAdapter = new ArrayAdapter<String>(searchActivity,
+            android.R.layout.simple_dropdown_item_1line, searchActivity.currentMenu);
+
+        switch (searchActivity.whatMenu)
+        {
+          case NAME:
+            searchActivity.inputTextName.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case CATEGORY:
+            searchActivity.inputTextCategory.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case ZIPCODE:
+            searchActivity.inputTextZip.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case CITY:
+            searchActivity.inputTextCity.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case STATE:
+            searchActivity.inputTextState.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case COST:
+            searchActivity.inputTextCost.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case LANGUAGE:
+            searchActivity.inputTextLanguage.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case AGE_GROUP:
+            searchActivity.inputTextPopulation.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          default:
+            searchActivity.inputTextName.setAdapter(searchActivity.mArrayAdapter);
+            break;
+        }
+      }
+      else
+      {
+        SearchNew searchActivity = ((SearchNew) context);
+
+        Log.e("TextChangeListener", "got context");
+        //fill a string array based on the user input... search the correct things..
+        searchActivity.currentMenu = searchActivity.getItems(userInput.toString());
+
+        searchActivity.mArrayAdapter.notifyDataSetChanged();
+        searchActivity.mArrayAdapter = new ArrayAdapter<String>(searchActivity,
+            android.R.layout.simple_dropdown_item_1line, searchActivity.currentMenu);
+
+        switch (searchActivity.whatMenu)
+        {
+          case NAME:
+            searchActivity.inputTextName.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case CATEGORY:
+            searchActivity.inputTextCategory.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case ZIPCODE:
+            searchActivity.inputTextZip.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case CITY:
+            searchActivity.inputTextCity.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case STATE:
+            searchActivity.inputTextState.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case COST:
+            searchActivity.inputTextCost.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case LANGUAGE:
+            searchActivity.inputTextLanguage.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          case AGE_GROUP:
+            searchActivity.inputTextPopulation.setAdapter(searchActivity.mArrayAdapter);
+            break;
+          default:
+            searchActivity.inputTextName.setAdapter(searchActivity.mArrayAdapter);
+            break;
+        }
       }
 
     } catch (NullPointerException e) {

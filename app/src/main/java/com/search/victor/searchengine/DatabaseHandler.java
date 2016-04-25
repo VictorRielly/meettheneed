@@ -784,6 +784,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return results;
     };
 
+
+  public String[] allOrganizations() {
+    Log.e("allOrg","AllOrg");
+    ArrayList<String> resultsList = new ArrayList<String>();
+    String[] results;
+    SQLiteDatabase db = this.getReadableDatabase();
+    Cursor output = db.rawQuery("Select Distinct O." + FIELD_ORG_NAME + " FROM " + TABLE_ORGANIZATION + " O;", null);
+    if (output.moveToFirst()) {
+      resultsList.add(output.getString(0));
+    }
+    while (output.move(1)) {
+      resultsList.add(output.getString(0));
+    }
+    results = new String[resultsList.size() + 1];
+    results[0] = "";
+    for (int i = 0; i < resultsList.size(); ++i) {
+      results[i + 1] = resultsList.get(i);
+    }
+    return results;
+  }
+
     public String[] allAges()
     {
         ArrayList<String> resultsList = new ArrayList<String>();
