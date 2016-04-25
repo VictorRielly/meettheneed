@@ -21,7 +21,8 @@
             android:id="@+id/exit"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            style="@style/ButtonAppTheme"/>
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:tools="http://schemas.android.com/tools"

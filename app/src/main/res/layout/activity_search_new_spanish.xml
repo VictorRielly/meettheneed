@@ -23,19 +23,13 @@
         android:id="@+id/buttonRow"
         >
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
-            android:src="@android:drawable/ic_media_play"/>
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Búsqueda de organizaciones"
             android:id="@+id/Search"
             style="@style/ButtonAppTheme"
-            android:layout_toRightOf="@+id/imageView2"/>
+            />
 
         <Button
             android:layout_alignParentRight="true"
@@ -45,7 +39,7 @@
             android:id="@+id/Clear"
             style="@style/ButtonAppTheme"
             android:gravity="center"
-            />
+            android:onClick="onNetoButton"/>
     </RelativeLayout>
 
 
