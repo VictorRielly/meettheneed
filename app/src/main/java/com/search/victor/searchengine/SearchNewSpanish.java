@@ -79,7 +79,8 @@ public class SearchNewSpanish extends AppCompatActivity
     setOnClickListeners();
     initAdapters();
     setupToolbar();
-
+    //dbContext.onCreate(database);
+    Log.e("here","are we here?");
     //dbContext.onUpgrade(database, 2,1);
 
 

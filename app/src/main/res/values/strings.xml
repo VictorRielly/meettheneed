@@ -9,4 +9,5 @@
     <string name="title_activity_organization">Organization</string>
     <string name="title_activity_search_spanish">searchSpanish</string>
     <string name="title_activity_organization_spanish">OrganizationSpanish</string>
+    <string name="title_activity_map">mapActivity</string>
 </resources>
