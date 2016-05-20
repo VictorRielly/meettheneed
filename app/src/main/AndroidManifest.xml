@@ -2,6 +2,9 @@
 <manifest package="com.search.victor.searchengine"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.CALL_PHONE">
+    </uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -56,6 +59,11 @@
         <activity
             android:name=".OrganizationSpanish"
             android:label="@string/title_activity_organization_spanish"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".utils.mapActivity"
+            android:label="@string/title_activity_map"
             android:theme="@style/AppTheme">
         </activity>
     </application>
