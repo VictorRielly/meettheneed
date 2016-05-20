@@ -10,4 +10,8 @@
     <string name="title_activity_search_spanish">searchSpanish</string>
     <string name="title_activity_organization_spanish">OrganizationSpanish</string>
     <string name="title_activity_map">mapActivity</string>
+
+
+    <string name="API_key">AIzaSyCl_cSg2FR9ERFfhMomuWojwcc_b3l75GU</string>
+
 </resources>

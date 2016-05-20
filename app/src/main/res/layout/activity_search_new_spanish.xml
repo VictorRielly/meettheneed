@@ -43,11 +43,17 @@
     </RelativeLayout>
 
 
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/buttonRow"/>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonRow"
+        android:layout_below="@+id/spinner"
         android:id="@+id/OrgName"
         style="@style/horizontalLinLayout">
 
